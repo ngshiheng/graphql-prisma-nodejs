@@ -1,0 +1,39 @@
+type User {
+    id: ID!
+    email: String!
+    password: String!
+    role: Role
+    createdAt: String!
+    updatedAt: String!
+}
+
+type AuthPayload {
+    token: String!
+    user: User!
+}
+
+type SystemMessage {
+    info: String
+}
+
+input UpdateUserInput {
+    email: String
+    role: Role
+}
+
+enum Role {
+    USER
+    ADMIN
+}
+
+type Query {
+    user(id: ID!): User!
+    users: [User!]!
+}
+
+type Mutation {
+    login(email: String!, password: String!): AuthPayload
+    createUser(email: String!, password: String!, role: Role): AuthPayload
+    updateUser(id: ID!, input: UpdateUserInput!): User
+    deleteUser(id: ID!): SystemMessage
+}
