@@ -3,6 +3,7 @@ const user = async (parent, args, context, info) => {
     if (!user) {
         throw new Error('User does not exist');
     }
+    return user;
 };
 
 const users = async (parent, args, context, info) => {
@@ -16,7 +17,7 @@ const users = async (parent, args, context, info) => {
         skip: args.skip,
         first: args.first,
         orderBy: args.orderBy,
-    }); // TODO: Mask return password
+    });
     const totalCount = await context.prisma
         .usersConnection({
             where,

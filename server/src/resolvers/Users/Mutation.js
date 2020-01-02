@@ -8,10 +8,10 @@ const login = async (parent, args, context, info) => {
         throw new Error('User does not exist');
     }
     const isPasswordValid = await bcrypt.compare(args.password, user.password);
-    if (isPasswordValid) {
-        throw new Error('Incorrect password'); // Note: You might want to change this error message to something more ambiguous
+    if (!isPasswordValid) {
+        throw new Error('Incorrect password'); // Note: Change this error message to something more ambiguous
     }
-    const token = jwt.sign({ userId: user.id }, APP_SECRET);
+    const token = jwt.sign({ userId: user.id }, APP_SECRET); // TODO: Add user role into payload?
     return {
         token,
         user,
@@ -19,6 +19,7 @@ const login = async (parent, args, context, info) => {
 };
 
 const createUser = async (parent, args, context, info) => {
+    // TODO: Input validation
     const hashedPassword = await bcrypt.hash(args.input.password, 10);
     const user = await context.prisma.createUser({
         ...args.input,
