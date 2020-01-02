@@ -9,7 +9,7 @@ const user = async (parent, args, context, info) => {
 const users = async (parent, args, context, info) => {
     const where = args.filter
         ? {
-              OR: [{ role_contains: args.filter }],
+              OR: [{ email_contains: args.filter }],
           }
         : {};
     const users = await context.prisma.users({
