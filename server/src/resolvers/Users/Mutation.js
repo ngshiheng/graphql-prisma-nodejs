@@ -1,6 +1,6 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const { APP_SECRET, getUserId } = require('../../utils');
+const { APP_SECRET } = require('../../utils');
 
 const login = async (parent, args, context, info) => {
     const user = await context.prisma.user({ email: args.email });
@@ -31,7 +31,6 @@ const createUser = async (parent, args, context, info) => {
     };
 };
 
-// TODO: Add authentication check, only admin/user can delete their own account
 const updateUser = async (parent, args, context, info) => {
     const user = await context.prisma.user({ id: args.id });
     if (!user) {
@@ -43,7 +42,6 @@ const updateUser = async (parent, args, context, info) => {
     });
 };
 
-// TODO: Add authentication check, only admin/user can delete their own account
 const deleteUser = async (parent, args, context, info) => {
     const user = await context.prisma.user({ id: args.id });
     if (!user) {

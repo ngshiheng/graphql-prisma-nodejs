@@ -1,5 +1,9 @@
-const user = async (parent, args, context, info) =>
-    await context.prisma.user({ id: args.id }); // TODO: Mask return password
+const user = async (parent, args, context, info) => {
+    const user = await context.prisma.user({ id: args.id }); // TODO: Mask return password
+    if (!user) {
+        throw new Error('User does not exist');
+    }
+};
 
 const users = async (parent, args, context, info) => {
     const where = args.filter

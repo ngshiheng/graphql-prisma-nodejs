@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const APP_SECRET = 'your-app-secret';
+const APP_SECRET = 'your-app-secret'; // Note: Keep your secret key in environment variable
 
 const getUserId = context => {
     const Authorization = context.request.get('Authorization');
@@ -8,7 +8,6 @@ const getUserId = context => {
         const { userId } = jwt.verify(token, APP_SECRET);
         return userId;
     }
-
     throw new Error('Unauthorized request');
 };
 
