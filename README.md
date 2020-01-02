@@ -1,12 +1,6 @@
 # GraphQL-Prisma-React-NodeJS
 
-Introduction or an overview that explains **what** the project is about.
-
-![](header.png)
-
-## Description
-
-A short description of the motivation behind the creation and maintenance of the project. This should explain **why** the project exists.
+A GraphQL, Prisma, ReactJS, NodeJS boilerplate with authentication setup
 
 ## Tech Stacks
 
@@ -14,18 +8,24 @@ _Example_
 
 - [graphql-yoga](https://github.com/prisma-labs/graphql-yoga)
 - [prisma](https://github.com/prisma/prisma)
+- [react](https://reactjs.org/)
+- [nodejs](https://nodejs.org/en/)
 
 ## Installation
 
-### OS X & Linux:
+### Linux:
 
-```sh
+```bash
+cd server/
 npm install
 ```
 
-## Usage example
+## Usage
 
-A few motivating and useful examples of how your product can be used. Spice this up with code blocks and potentially more screenshots.
+```bash
+cd server/
+npm run start
+```
 
 ## Development setup
 

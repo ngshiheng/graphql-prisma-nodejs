@@ -7,13 +7,20 @@ type User {
     updatedAt: String!
 }
 
+type Users {
+    users: [User!]!
+    totalCount: Int!
+}
+
 type AuthPayload {
     token: String!
     user: User!
 }
 
-type SystemMessage {
-    info: String
+input CreateUserInput {
+    email: String!
+    password: String!
+    role: Role
 }
 
 input UpdateUserInput {
@@ -21,19 +28,33 @@ input UpdateUserInput {
     role: Role
 }
 
+type SystemMessage {
+    info: String
+}
+
+type Query {
+    user(id: ID!): User!
+    users(
+        filter: String
+        skip: Int
+        first: Int
+        orderBy: UserOrderByInput
+    ): Users!
+}
+
+type Mutation {
+    login(email: String!, password: String!): AuthPayload
+    createUser(input: CreateUserInput!): AuthPayload
+    updateUser(id: ID!, input: UpdateUserInput!): User
+    deleteUser(id: ID!): SystemMessage
+}
+
 enum Role {
     USER
     ADMIN
 }
 
-type Query {
-    user(id: ID!): User!
-    users: [User!]!
-}
-
-type Mutation {
-    login(email: String!, password: String!): AuthPayload
-    createUser(email: String!, password: String!, role: Role): AuthPayload
-    updateUser(id: ID!, input: UpdateUserInput!): User
-    deleteUser(id: ID!): SystemMessage
+enum UserOrderByInput {
+    createdAt_ASC
+    createdAt_DESC
 }

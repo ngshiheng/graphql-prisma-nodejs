@@ -1,7 +1,5 @@
 # The HTTP endpoint for your Prisma API
-#endpoint: ""
-#endpoint: https://eu1.prisma.sh/jerry-ng-9be71a/graphql-prisma-react-js/
-endpoint: https://eu1.prisma.sh/jerry-ng-9be71a/server/dev
+endpoint: https://eu1.prisma.sh/jerry-ng-9be71a/graphql-prisma-react-js/dev
 
 # Points to the file that contains your datamodel
 datamodel: datamodel.prisma
@@ -10,3 +8,7 @@ datamodel: datamodel.prisma
 generate:
     - generator: javascript-client
       output: ../src/generated/prisma-client
+
+hooks:
+    post-reply:
+        - prisma generate
