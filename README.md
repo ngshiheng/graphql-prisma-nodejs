@@ -1,42 +1,74 @@
-# GraphQL-Prisma-React-NodeJS
+# GraphQL-Prisma-React-NodeJS Project Boilerplate
 
 A GraphQL, Prisma, ReactJS, NodeJS boilerplate with authentication setup
 
-## Tech Stacks
+## Planned updates :crystal_ball:
 
-_Example_
+### Server
 
+- Add tests for `server`
+- Add `eslint` lint check for `server`
+- Passport authentication
+
+### Client
+
+_Work in progress..._
+
+## Tech Stacks :computer:
+
+- [nodejs](https://nodejs.org/en/)
 - [graphql-yoga](https://github.com/prisma-labs/graphql-yoga)
 - [prisma](https://github.com/prisma/prisma)
 - [react](https://reactjs.org/)
-- [nodejs](https://nodejs.org/en/)
+- [react-admin](https://marmelab.com/react-admin/)
+- [docker](https://www.docker.com/)
 
-## Installation
+## Installation :tools:
 
-### Linux:
+You need to install the Prisma CLI
 
-```bash
-cd server/
-npm install
+```
+npm i -g prisma
 ```
 
-## Usage
+## Usage :hammer:
+
+```bash
+git clone https://github.com/ngshiheng/graphql-prisma-react-js.git
+```
+
+Then change anything you want!
+
+### Docker :whale:
+
+```bash
+- Run `./build.sh` to build new docker image
+- Run `./run.sh` to run container from the newly built docker image
+```
+
+## Development :triangular_ruler:
+
+### Server
 
 ```bash
 cd server/
+npm ci
 npm run start
 ```
 
-## Development setup
+- Run `prisma deploy` and `prisma generate` every time you update the datamodel for prisma
+- Run `./build.sh` to build new docker image
+- Run `./run.sh` to run container from the newly built docker image
 
-Describe how to install all development dependencies and how to run an automated test-suite of some kind. Potentially do this for multiple platforms.
+### Client
 
-```sh
-make install
-npm test
-```
+_Work in progress..._
 
-## Contributing
+## Contributing :construction_worker:
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+### Steps
 
 1. Fork this
 2. Create your feature branch (`git checkout -b feature/fooBar`)
@@ -44,9 +76,9 @@ npm test
 4. Push to the branch (`git push origin feature/fooBar`)
 5. Create a new Pull Request
 
-## License
+## License :copyright:
 
-Copyright <YEAR> <COPYRIGHT HOLDER>
+Copyright 2020 Jerry Ng
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
