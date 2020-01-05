@@ -2,14 +2,14 @@
 
 A GraphQL, Prisma, NodeJS boilerplate with authentication setup
 
-### Upcoming updates :crystal_ball:
+**TODO:**
 
 - Add tests for `server`
 - [passport](http://www.passportjs.org/)
 - Add sample objects (Books & Authors)
 - TypeScript support
 
-### Future updates :crystal_ball:
+**Future updates** :crystal_ball:
 
 - Frontend support:
   - [react](https://reactjs.org/)
@@ -62,7 +62,7 @@ npm run start
 
 - Run `prisma deploy` every time you update the datamodel for prisma
 
-### Docker :whale:
+### Containerize your project with Docker :whale:
 
 - Run `./build.sh` to build new docker image
 - Run `./run.sh` to run container from the newly built docker image

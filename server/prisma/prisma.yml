@@ -9,5 +9,3 @@ generate:
 hooks:
     post-reply:
         - prisma generate
-
-endpoint: https://us1.prisma.sh/jerry-ng-9be71a/oneone/dev
