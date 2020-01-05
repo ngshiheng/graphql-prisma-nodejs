@@ -1,7 +1,7 @@
-const { rule, shield, or, and, not } = require('graphql-shield');
+const { rule, shield, or } = require('graphql-shield');
 const { getUserId } = require('../utils');
 
-const isAdmin = rule()(async (parent, args, context, info) => {
+const isAdmin = rule()(async (parent, args, context) => {
     const userId = getUserId(context);
     const user = await context.prisma.user({
         id: userId,
@@ -9,12 +9,12 @@ const isAdmin = rule()(async (parent, args, context, info) => {
     return user.role === 'ADMIN';
 });
 
-const isOwner = rule()(async (parent, args, context, info) => {
+const isOwner = rule()(async (parent, args, context) => {
     const userId = getUserId(context);
     return userId === args.id;
 });
 
-const isAuthenticated = rule()(async (parent, args, context, info) => {
+const isAuthenticated = rule()(async (parent, args, context) => {
     const userId = getUserId(context);
     return Boolean(userId);
 });

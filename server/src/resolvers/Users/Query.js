@@ -1,4 +1,4 @@
-const user = async (parent, args, context, info) => {
+const user = async (parent, args, context) => {
     const user = await context.prisma.user({ id: args.id }); // TODO: Mask return password
     if (!user) {
         throw new Error('User does not exist');
@@ -6,12 +6,8 @@ const user = async (parent, args, context, info) => {
     return user;
 };
 
-const users = async (parent, args, context, info) => {
-    const where = args.filter
-        ? {
-              OR: [{ email_contains: args.filter }],
-          }
-        : {};
+const users = async (parent, args, context) => {
+    const where = args.filter ? { OR: [{ email_contains: args.filter }] } : {};
     const users = await context.prisma.users({
         where,
         skip: args.skip,

@@ -2,7 +2,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { APP_SECRET } = require('../../utils');
 
-const login = async (parent, args, context, info) => {
+const login = async (parent, args, context) => {
     const user = await context.prisma.user({ email: args.email });
     if (!user) {
         throw new Error('User does not exist');
@@ -18,7 +18,7 @@ const login = async (parent, args, context, info) => {
     };
 };
 
-const createUser = async (parent, args, context, info) => {
+const createUser = async (parent, args, context) => {
     // TODO: Input validation
     const hashedPassword = await bcrypt.hash(args.input.password, 10);
     const user = await context.prisma.createUser({
@@ -32,18 +32,18 @@ const createUser = async (parent, args, context, info) => {
     };
 };
 
-const updateUser = async (parent, args, context, info) => {
+const updateUser = async (parent, args, context) => {
     const user = await context.prisma.user({ id: args.id });
     if (!user) {
         throw new Error('User does not exist');
     }
-    return await context.prisma.updateUser({
+    return context.prisma.updateUser({
         where: { id: args.id },
         data: { ...args.input },
     });
 };
 
-const deleteUser = async (parent, args, context, info) => {
+const deleteUser = async (parent, args, context) => {
     const user = await context.prisma.user({ id: args.id });
     if (!user) {
         throw new Error('User does not exist');

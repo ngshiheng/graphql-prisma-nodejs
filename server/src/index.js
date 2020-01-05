@@ -3,6 +3,7 @@ const { prisma } = require('./generated/prisma-client');
 const { permissions } = require('./permissions');
 const Query = require('./resolvers/Users/Query');
 const Mutation = require('./resolvers/Users/Mutation');
+
 const resolvers = {
     Query,
     Mutation,
@@ -27,7 +28,7 @@ mutation {
 const server = new GraphQLServer({
     typeDefs: './src/schemas/Users/schema.graphql', // TODO: Bind all typeDefs & resolvers from different objects
     resolvers,
-    // middlewares: [permissions],
+    middlewares: [permissions],
     context: request => {
         return {
             ...request,

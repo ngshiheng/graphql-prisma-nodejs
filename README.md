@@ -1,27 +1,26 @@
-# GraphQL-Prisma-React-NodeJS Project Boilerplate
+# GraphQL-Prisma-NodeJS Project Boilerplate
 
-A GraphQL, Prisma, ReactJS, NodeJS boilerplate with authentication setup
+A GraphQL, Prisma, NodeJS boilerplate with authentication setup
 
-## Planned updates :crystal_ball:
-
-### Server
+## Upcoming updates :crystal_ball:
 
 - Add tests for `server`
 - Add `eslint` lint check for `server`
 - [passport](http://www.passportjs.org/)
 - Add sample objects (Books & Authors)
+- TypeScript
 
-### Client
+## Future updates :crystal_ball:
 
-_Work in progress..._
+- Frontend support with:
+  - [react](https://reactjs.org/)
+  - [react-admin](https://marmelab.com/react-admin/)
 
 ## Tech Stacks :computer:
 
 - [nodejs](https://nodejs.org/en/)
 - [graphql-yoga](https://github.com/prisma-labs/graphql-yoga)
 - [prisma](https://github.com/prisma/prisma)
-- [react](https://reactjs.org/)
-- [react-admin](https://marmelab.com/react-admin/)
 - [docker](https://www.docker.com/)
 
 ## Installation :tools:
@@ -32,27 +31,29 @@ You need to install the Prisma CLI
 npm i -g prisma
 ```
 
-## Usage :hammer:
+## Usage :wrench:
+
+Clone this repository to your local machine
 
 ```bash
 git clone https://github.com/ngshiheng/graphql-prisma-react-js.git
 
 # Create a new connection to a remote repository.
-git remote rm <name>
+git remote remove <name>
 ```
 
-Then change anything you want!
-
-### Docker :whale:
+Setup a demo server on Prisma
 
 ```bash
-- Run `./build.sh` to build new docker image
-- Run `./run.sh` to run container from the newly built docker image
+cd server/prisma/
+prisma deploy
 ```
+
+_Note: Choose Demo server + MySQL database_
 
 ## Development :triangular_ruler:
 
-### Server
+### Run development server locally
 
 ```bash
 cd server/
@@ -60,13 +61,12 @@ npm ci
 npm run start
 ```
 
-- Run `prisma deploy` and `prisma generate` every time you update the datamodel for prisma
+- Run `prisma deploy` every time you update the datamodel for prisma
+
+### Docker :whale:
+
 - Run `./build.sh` to build new docker image
 - Run `./run.sh` to run container from the newly built docker image
-
-### Client
-
-_Work in progress..._
 
 ## Contributing :construction_worker:
 

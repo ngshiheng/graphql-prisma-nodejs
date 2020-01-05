@@ -1,5 +1,5 @@
 # The HTTP endpoint for your Prisma API
-endpoint: https://eu1.prisma.sh/jerry-ng-9be71a/graphql-prisma-react-js/dev
+endpoint: ''
 
 # Points to the file that contains your datamodel
 datamodel: datamodel.prisma
@@ -12,5 +12,3 @@ generate:
 hooks:
     post-reply:
         - prisma generate
-
-secret: 'your-app-secret' # TODO: Keep your secret key in environment variable
