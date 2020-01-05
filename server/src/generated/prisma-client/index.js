@@ -16,6 +16,7 @@ var models = [
 exports.Prisma = prisma_lib_1.makePrismaClientClass({
   typeDefs,
   models,
-  endpoint: `https://eu1.prisma.sh/jerry-ng-9be71a/graphql-prisma-react-js/dev`
+  endpoint: `https://eu1.prisma.sh/jerry-ng-9be71a/graphql-prisma-react-js/dev`,
+  secret: `your-app-secret`
 });
 exports.prisma = new exports.Prisma();

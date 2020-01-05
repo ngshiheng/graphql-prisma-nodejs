@@ -12,3 +12,5 @@ generate:
 hooks:
     post-reply:
         - prisma generate
+
+secret: 'your-app-secret' # TODO: Keep your secret key in environment variable
