@@ -1,6 +1,3 @@
-# The HTTP endpoint for your Prisma API
-endpoint: ''
-
 # Points to the file that contains your datamodel
 datamodel: datamodel.prisma
 
@@ -12,3 +9,5 @@ generate:
 hooks:
     post-reply:
         - prisma generate
+
+endpoint: https://us1.prisma.sh/jerry-ng-9be71a/oneone/dev
