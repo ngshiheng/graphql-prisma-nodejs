@@ -8,7 +8,8 @@ A GraphQL, Prisma, ReactJS, NodeJS boilerplate with authentication setup
 
 - Add tests for `server`
 - Add `eslint` lint check for `server`
-- Passport authentication
+- [passport](http://www.passportjs.org/)
+- Add sample objects (Books & Authors)
 
 ### Client
 
@@ -35,6 +36,9 @@ npm i -g prisma
 
 ```bash
 git clone https://github.com/ngshiheng/graphql-prisma-react-js.git
+
+# Create a new connection to a remote repository.
+git remote rm <name>
 ```
 
 Then change anything you want!

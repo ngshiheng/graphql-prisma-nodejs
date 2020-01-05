@@ -21,15 +21,13 @@ mutation {
 
 # Replace <paste access token here> with your access token
 # Paste the authorization header below in the 'HTTP HEADERS' tab at the bottom of the page for all your requests
-#   {
-#        Authorization: 'Bearer <paste access token here>',
-#   }
+# { "Authorization": "Bearer <paste access token here>" }
 `;
 
 const server = new GraphQLServer({
     typeDefs: './src/schemas/Users/schema.graphql', // TODO: Bind all typeDefs & resolvers from different objects
     resolvers,
-    middlewares: [permissions],
+    // middlewares: [permissions],
     context: request => {
         return {
             ...request,
