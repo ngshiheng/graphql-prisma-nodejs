@@ -2,14 +2,14 @@
 
 A GraphQL, Prisma, NodeJS boilerplate with authentication setup
 
-## Upcoming updates :crystal_ball:
+### Upcoming updates :crystal_ball:
 
 - Add tests for `server`
 - [passport](http://www.passportjs.org/)
 - Add sample objects (Books & Authors)
 - TypeScript support
 
-## Future updates :crystal_ball:
+### Future updates :crystal_ball:
 
 - Frontend support:
   - [react](https://reactjs.org/)
@@ -22,7 +22,7 @@ A GraphQL, Prisma, NodeJS boilerplate with authentication setup
 - [prisma](https://github.com/prisma/prisma)
 - [docker](https://www.docker.com/)
 
-## Installation :tools:
+## Installation :nut_and_bolt:
 
 You need to install the Prisma CLI
 
