@@ -5,14 +5,13 @@ A GraphQL, Prisma, NodeJS boilerplate with authentication setup
 ## Upcoming updates :crystal_ball:
 
 - Add tests for `server`
-- Add `eslint` lint check for `server`
 - [passport](http://www.passportjs.org/)
 - Add sample objects (Books & Authors)
-- TypeScript
+- TypeScript support
 
 ## Future updates :crystal_ball:
 
-- Frontend support with:
+- Frontend support:
   - [react](https://reactjs.org/)
   - [react-admin](https://marmelab.com/react-admin/)
 
@@ -49,7 +48,7 @@ cd server/prisma/
 prisma deploy
 ```
 
-_Note: Choose Demo server + MySQL database_
+_Note: Choose Demo server + MySQL database option_
 
 ## Development :triangular_ruler:
 
