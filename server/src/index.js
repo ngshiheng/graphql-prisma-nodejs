@@ -1,17 +1,11 @@
 const { GraphQLServer } = require('graphql-yoga');
 const { prisma } = require('./generated/prisma-client');
 const { permissions } = require('./permissions');
-const Query = require('./resolvers/Users/Query');
-const Mutation = require('./resolvers/Users/Mutation');
+const resolvers = require('./resolvers');
 
-const resolvers = {
-    Query,
-    Mutation,
-};
-
-const defaultLoginQuery = `# Enter your <email> and <password> to login to receive your access token
+const defaultLoginQuery = `# Enter your email and password to login to receive your access token
 mutation {
-  login(email: "<email>", password: "<password>") {
+  login(email: "", password: "") {
     token
     user {
       id
@@ -26,7 +20,7 @@ mutation {
 `;
 
 const server = new GraphQLServer({
-    typeDefs: './src/schemas/Users/schema.graphql', // TODO: Bind all typeDefs & resolvers from different objects
+    typeDefs: './src/schemas/schema.graphql',
     resolvers,
     middlewares: [permissions],
     context: request => {
