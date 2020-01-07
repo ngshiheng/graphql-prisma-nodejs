@@ -1,5 +1,5 @@
 const user = async (parent, args, context) => {
-    const user = await context.prisma.user({ id: args.id }); // TODO: Mask return password
+    const user = await context.prisma.user({ id: args.id });
     if (!user) {
         throw new Error('User does not exist');
     }
@@ -8,10 +8,13 @@ const user = async (parent, args, context) => {
 
 const users = async (parent, args, context) => {
     const where = args.filter ? { OR: [{ email_contains: args.filter }] } : {};
-    const users = await context.prisma.users({
+    const users = await context.prisma.usersConnection({
         where,
         skip: args.skip,
+        after: args.after,
+        before: args.before,
         first: args.first,
+        last: args.last,
         orderBy: args.orderBy,
     });
     const totalCount = await context.prisma
@@ -21,7 +24,8 @@ const users = async (parent, args, context) => {
         .aggregate()
         .count();
     return {
-        users,
+        edges: users.edges,
+        pageInfo: users.pageInfo,
         totalCount,
     };
 };
