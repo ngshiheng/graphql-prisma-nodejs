@@ -48,8 +48,7 @@ const deleteUser = async (parent, args, context) => {
     if (!user) {
         throw new Error('User does not exist');
     }
-    const deletedUser = await context.prisma.deleteUser({ id: args.id });
-    return { info: `Successfully deleted user: ${deletedUser.email}` };
+    return await context.prisma.deleteUser({ id: args.id });
 };
 
 module.exports = {

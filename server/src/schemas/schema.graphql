@@ -6,29 +6,27 @@ type User {
     updatedAt: String!
 }
 
-type Users {
-    users: [User!]!
-    totalCount: Int!
-}
-
 type AuthPayload {
     token: String!
     user: User!
 }
 
-input CreateUserInput {
-    email: String!
-    password: String!
-    role: Role
+type UserEdge {
+    node: User!
+    cursor: String!
 }
 
-input UpdateUserInput {
-    email: String
-    role: Role
+type UserConnection {
+    edges: [UserEdge]!
+    pageInfo: PageInfo!
+    totalCount: Int!
 }
 
-type SystemMessage {
-    info: String
+type PageInfo {
+    hasNextPage: Boolean!
+    hasPreviousPage: Boolean!
+    startCursor: String
+    endCursor: String
 }
 
 type Query {
@@ -36,16 +34,30 @@ type Query {
     users(
         filter: String
         skip: Int
+        after: String
+        before: String
         first: Int
+        last: Int
         orderBy: UserOrderByInput
-    ): Users!
+    ): UserConnection!
+}
+
+input UserCreateInput {
+    email: String!
+    password: String!
+    role: Role
+}
+
+input UserUpdateInput {
+    email: String
+    role: Role
 }
 
 type Mutation {
-    login(email: String!, password: String!): AuthPayload
-    createUser(input: CreateUserInput!): AuthPayload
-    updateUser(id: ID!, input: UpdateUserInput!): User
-    deleteUser(id: ID!): SystemMessage
+    login(email: String!, password: String!): AuthPayload!
+    createUser(input: UserCreateInput!): AuthPayload!
+    updateUser(id: ID!, input: UserUpdateInput!): User!
+    deleteUser(id: ID!): User!
 }
 
 enum Role {
@@ -54,6 +66,14 @@ enum Role {
 }
 
 enum UserOrderByInput {
+    id_ASC
+    id_DESC
+    email_ASC
+    email_DESC
+    role_ASC
+    role_DESC
     createdAt_ASC
     createdAt_DESC
+    updatedAt_ASC
+    updatedAt_DESC
 }
