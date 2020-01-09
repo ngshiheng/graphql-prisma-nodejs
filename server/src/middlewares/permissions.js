@@ -1,5 +1,5 @@
 const { rule, shield, or } = require('graphql-shield');
-const { getUserId } = require('../utils');
+const { getUserId } = require('../utils/utils');
 
 const isAdmin = rule()(async (parent, args, context) => {
     const userId = getUserId(context);
@@ -19,7 +19,7 @@ const isAuthenticated = rule()(async (parent, args, context) => {
     return Boolean(userId);
 });
 
-const permissions = shield({
+exports.permissions = shield({
     Query: {
         user: isAuthenticated,
         users: isAuthenticated,
@@ -29,7 +29,3 @@ const permissions = shield({
         deleteUser: or(isAdmin),
     },
 });
-
-module.exports = {
-    permissions,
-};

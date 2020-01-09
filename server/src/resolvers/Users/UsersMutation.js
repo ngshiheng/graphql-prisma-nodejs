@@ -1,6 +1,5 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const { APP_SECRET } = require('../../utils');
 
 const login = async (parent, args, context) => {
     const user = await context.prisma.user({ email: args.email });
@@ -11,7 +10,9 @@ const login = async (parent, args, context) => {
     if (!isPasswordValid) {
         throw new Error('Incorrect password'); // Note: Change this error message to something more ambiguous
     }
-    const token = jwt.sign({ userId: user.id }, APP_SECRET); // TODO: Add user role into payload?
+    const token = jwt.sign({ userId: user.id }, process.env.SECRET, {
+        expiresIn: process.env.EXPIRY,
+    });
     return {
         token,
         user,
@@ -25,7 +26,9 @@ const createUser = async (parent, args, context) => {
         ...args.input,
         password: hashedPassword,
     });
-    const token = jwt.sign({ userId: user.id }, APP_SECRET);
+    const token = jwt.sign({ userId: user.id }, process.env.SECRET, {
+        expiresIn: process.env.EXPIRY,
+    });
     return {
         token,
         user,

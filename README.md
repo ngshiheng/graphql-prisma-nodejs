@@ -1,19 +1,20 @@
 # GraphQL-Prisma-NodeJS Project Boilerplate
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/ngshiheng/graphql-prisma-nodejs/blob/master/LICENSE)
 
 A GraphQL, Prisma, NodeJS boilerplate with authentication setup
 
-**TODO:**
+**Coming features** :crystal_ball:
 
 - Add tests for `server`
 - [passport](http://www.passportjs.org/)
 - Add sample objects (Books & Authors)
 - TypeScript support
 
-**Future updates** :crystal_ball:
+**Future updates** 
 
-- Frontend support:
-  - [react](https://reactjs.org/)
-  - [react-admin](https://marmelab.com/react-admin/)
+- [react](https://reactjs.org/)
+- [react-admin](https://marmelab.com/react-admin/)
+- [material-ui](https://material-ui.com/)
 
 ## Tech Stacks :computer:
 
@@ -40,6 +41,8 @@ git clone https://github.com/ngshiheng/graphql-prisma-react-js.git
 # Create a new connection to a remote repository.
 git remote remove <name>
 ```
+
+Rename `.env.example` to `.env` and fill up the configuration respectively
 
 Setup a demo server on Prisma
 
