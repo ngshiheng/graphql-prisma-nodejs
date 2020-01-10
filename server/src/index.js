@@ -2,8 +2,7 @@ const { GraphQLServer } = require('graphql-yoga');
 const { prisma } = require('./generated/prisma-client');
 const { permissions } = require('./middlewares/permissions');
 const resolvers = require('./resolvers');
-const dotenv = require('dotenv');
-dotenv.config();
+require('dotenv').config();
 
 const defaultLoginQuery = `# Enter your email and password to login to receive your access token
 mutation {
