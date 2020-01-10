@@ -5,9 +5,10 @@
     "main": "index.js",
     "scripts": {
         "start": "nodemon src/index.js",
+        "test": "mocha src/**/**/*.test.js",
+        "test:watch": "mocha src/**/**/*.test.js --watch",
         "lint": "eslint . --ext .js --ext .gql --ext .graphql --ignore-path ../.gitignore",
-        "lint:fix": "eslint --fix . --ext js,graphql --ignore-path ../.gitignore",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "lint:fix": "eslint --fix . --ext js,graphql --ignore-path ../.gitignore"
     },
     "keywords": [
         "GraphQL",
@@ -25,10 +26,14 @@
         "prisma-client-lib": "^1.34.10"
     },
     "devDependencies": {
+        "chai": "^4.2.0",
         "eslint": "^6.8.0",
         "eslint-plugin-graphql": "^3.1.1",
+        "graphql": "^14.5.8",
+        "mocha": "^7.0.0",
         "nodemon": "^2.0.2",
-        "prettier": "^1.19.1"
+        "prettier": "^1.19.1",
+        "supertest": "^4.0.2"
     },
     "prettier": {
         "trailingComma": "all",
