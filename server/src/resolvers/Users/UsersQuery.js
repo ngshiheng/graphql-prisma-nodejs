@@ -1,4 +1,4 @@
-const user = async (parent, args, context) => {
+exports.user = async (parent, args, context) => {
     const user = await context.prisma.user({ id: args.id });
     if (!user) {
         throw new Error('User does not exist');
@@ -6,7 +6,7 @@ const user = async (parent, args, context) => {
     return user;
 };
 
-const users = async (parent, args, context) => {
+exports.users = async (parent, args, context) => {
     const where = args.filter ? { OR: [{ email_contains: args.filter }] } : {};
     const users = await context.prisma.usersConnection({
         where,
@@ -28,9 +28,4 @@ const users = async (parent, args, context) => {
         pageInfo: users.pageInfo,
         totalCount,
     };
-};
-
-module.exports = {
-    user,
-    users,
 };
