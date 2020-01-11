@@ -1,7 +1,7 @@
 type User {
     id: ID!
     email: String!
-    role: Role
+    role: Role!
     createdAt: String!
     updatedAt: String!
 }
