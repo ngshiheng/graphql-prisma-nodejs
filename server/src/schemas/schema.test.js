@@ -50,6 +50,12 @@ describe('server/src/schemas/schema.graphql', () => {
                         orderBy: $orderBy
                     ) {
                         totalCount
+                        pageInfo {
+                            hasNextPage
+                            hasPreviousPage
+                            startCursor
+                            endCursor
+                        }
                         edges {
                             node {
                                 id
@@ -68,7 +74,7 @@ describe('server/src/schemas/schema.graphql', () => {
     describe('User mutations', () => {
         test('createUser', () => {
             const mutation = `
-                mutation CreateUser($email: String! $password: String!) {
+                mutation createUser($email: String! $password: String!) {
                     createUser(input: { email: $email, password: $password }) {
                         token
                         user {
