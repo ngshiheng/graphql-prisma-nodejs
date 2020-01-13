@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 const schemaCode = fs.readFileSync(
-    path.join(__dirname, 'schema.graphql'),
+    path.join(__dirname, '..', 'schemas', 'schema.graphql'),
     'utf8',
 );
 
