@@ -4,7 +4,7 @@ const path = require('path');
 const { expect } = require('chai');
 
 const schemaCode = fs.readFileSync(
-    path.join(__dirname, '..', '..', 'schemas', 'schema.graphql'),
+    path.join(__dirname, '..', 'schemas', 'schema.graphql'),
     'utf8',
 );
 
