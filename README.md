@@ -5,10 +5,11 @@ A GraphQL, Prisma, NodeJS boilerplate with authentication setup
 
 **Coming features** :crystal_ball:
 
-- Add tests for `server`
-- [passport](http://www.passportjs.org/)
-- Add sample objects (Books & Authors)
-- TypeScript support
+- [X] Add tests for `server`
+- [ ] Setup Travis CI
+- [ ] [passport](http://www.passportjs.org/)
+- [ ] Add sample objects (Books & Authors)
+- [ ] `TypeScript` support
 
 **Future updates** 
 
@@ -33,25 +34,29 @@ npm i -g prisma
 
 ## Usage :wrench:
 
-Clone this repository to your local machine
+#### Clone this repository to your local machine
 
 ```bash
 git clone https://github.com/ngshiheng/graphql-prisma-react-js.git
 
-# Create a new connection to a remote repository.
-git remote remove <name>
+# Create a new connection to a remote repository
+git remote set-url origin git://new.url.here
 ```
 
-Rename `.env.example` to `.env` and fill up the configuration respectively
+#### Rename `.env.example` to `.env` and fill up the configuration respectively
 
-Setup a demo server on Prisma
+#### Setup database with prisma
 
 ```bash
 cd server/prisma/
 prisma deploy
 ```
 
-_Note: Choose Demo server + MySQL database option_
+- For quick setup, choose `Demo server + MySQL database `option
+- You need to configure your prisma endpoint accordingly
+- Export your `PRISMA_ENDPOINT` inside your `bash_profile`/`bashrc`/environment variables
+
+More information how to [set up Prisma](https://www.prisma.io/docs/get-started/01-setting-up-prisma-new-database-JAVASCRIPT-a002/)
 
 ## Development :triangular_ruler:
 
@@ -72,7 +77,7 @@ npm run start
 
 ## Contributing :construction_worker:
 
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change
 
 ### Steps
 
@@ -84,7 +89,7 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 ## License :copyright:
 
-Copyright 2020 Jerry Ng
+Copyright 2020 GraphQL Prisma NodeJS Project Boilerplate
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 

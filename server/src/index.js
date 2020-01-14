@@ -41,6 +41,6 @@ const options = {
 
 server.start(options, () =>
     console.log(
-        `🚀  Server is running on http://localhost:${process.env.PORT}/graphql`,
+        `🚀  Server is running on http://localhost:${process.env.PORT}${process.env.ENDPOINT}`,
     ),
 );

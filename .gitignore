@@ -12,7 +12,3 @@ node_modules
 
 # Stores VSCode versions used for testing VSCode extensions
 .vscode
-
-# Prisma generated files
-prisma-client/
-
