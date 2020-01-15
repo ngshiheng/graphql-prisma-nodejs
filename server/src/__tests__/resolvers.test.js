@@ -3,7 +3,6 @@ const fs = require('fs');
 const path = require('path');
 const { expect } = require('chai');
 const { prisma } = require('../generated/prisma-client');
-require('dotenv').config();
 
 const resolvers = require('../resolvers');
 const schemaCode = fs.readFileSync(
