@@ -1,21 +1,16 @@
 # GraphQL-Prisma-NodeJS Project Boilerplate
+[![Build Status](https://travis-ci.org/ngshiheng/graphql-prisma-nodejs.svg?branch=master)](https://travis-ci.org/ngshiheng/graphql-prisma-nodejs)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/ngshiheng/graphql-prisma-nodejs/blob/master/LICENSE)
 
 A GraphQL, Prisma, NodeJS boilerplate with authentication setup
 
-**Coming features** :crystal_ball:
+**Features** 
 
-- [X] Add tests for `server`
-- [ ] Setup Travis CI
+- [X] Integration and E2E test examples
+- [X] Travis CI
 - [ ] [passport](http://www.passportjs.org/)
 - [ ] Add sample objects (Books & Authors)
 - [ ] `TypeScript` support
-
-**Future updates** 
-
-- [react](https://reactjs.org/)
-- [react-admin](https://marmelab.com/react-admin/)
-- [material-ui](https://material-ui.com/)
 
 ## Tech Stacks :computer:
 
@@ -34,7 +29,7 @@ npm i -g prisma
 
 ## Usage :wrench:
 
-#### Clone this repository to your local machine
+#### 1. Clone this repository to your local machine
 
 ```bash
 git clone https://github.com/ngshiheng/graphql-prisma-react-js.git
@@ -43,9 +38,16 @@ git clone https://github.com/ngshiheng/graphql-prisma-react-js.git
 git remote set-url origin git://new.url.here
 ```
 
-#### Rename `.env.example` to `.env` and fill up the configuration respectively
+#### 2. Setup your environment variables
+```bash
+export PRISMA_ENDPOINT="https://xxx.xxx.xxx"
+export SECRET="your-app-secret"
+export ENDPOINT="/graphql"
+export PORT=4000
+export EXPIRY="12h"
+```
 
-#### Setup database with prisma
+#### 3. Setup database with prisma
 
 ```bash
 cd server/prisma/
@@ -53,8 +55,7 @@ prisma deploy
 ```
 
 - For quick setup, choose `Demo server + MySQL database `option
-- You need to configure your prisma endpoint accordingly
-- Export your `PRISMA_ENDPOINT` inside your `bash_profile`/`bashrc`/environment variables
+- Set your prisma endpoint to `PRISMA_ENDPOINT` inside your `bash_profile` or `bashrc` or any environment variable of your system
 
 More information how to [set up Prisma](https://www.prisma.io/docs/get-started/01-setting-up-prisma-new-database-JAVASCRIPT-a002/)
 
