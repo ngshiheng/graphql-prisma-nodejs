@@ -39,6 +39,7 @@ git remote set-url origin git://new.url.here
 ```
 
 #### 2. Setup your environment variables
+
 ```bash
 export PRISMA_ENDPOINT="https://xxx.xxx.xxx"
 export SECRET="your-app-secret"
@@ -56,8 +57,7 @@ prisma deploy
 
 - For quick setup, choose `Demo server + MySQL database `option
 - Set your prisma endpoint to `PRISMA_ENDPOINT` inside your `bash_profile` or `bashrc` or any environment variable of your system
-
-More information how to [set up Prisma](https://www.prisma.io/docs/get-started/01-setting-up-prisma-new-database-JAVASCRIPT-a002/)
+- More information on [setting up Prisma](https://www.prisma.io/docs/get-started/01-setting-up-prisma-new-database-JAVASCRIPT-a002/)
 
 ## Development :triangular_ruler:
 
@@ -71,9 +71,12 @@ npm run start
 
 - Run `prisma deploy` every time you update the datamodel for prisma
 
-### Containerize your project with Docker :whale:
+### Docker :whale:
 
-- Run `./build.sh` to build new docker image
+- Run `docker-compose up -d` to build & run this project in a docker container
+
+**Optional:**
+- Run `./build.sh` or `docker-compose build` to build a docker image
 - Run `./run.sh` to run container from the newly built docker image
 
 ## Contributing :construction_worker:

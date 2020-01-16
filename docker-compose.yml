@@ -1,0 +1,15 @@
+version: "3"
+services:
+    server:
+        container_name: graphql-prisma-nodejs
+        environment:
+            - PRISMA_ENDPOINT=$PRISMA_ENDPOINT
+            - SECRET=$SECRET
+            - ENDPOINT=$ENDPOINT
+            - PORT=$PORT
+            - EXPIRY=$EXPIRY
+        restart: always
+        build: ./server
+        image: ${DOCKER_USERNAME}/graphql-prisma-nodejs
+        ports:
+            - "$PORT:$PORT"

@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# Note: Use 'docker-compose up -d' for quick setup
+
 DOCKER_IMAGE_NAME="graphql-prisma-nodejs"
 DOCKER_CONTAINER_NAME="yourcontainername"
 
