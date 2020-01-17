@@ -10,6 +10,7 @@ before_install:
     - cd server
 
 script:
+    - npm run lint
     - cd ..
     - docker-compose build
     - docker images 
