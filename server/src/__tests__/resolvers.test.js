@@ -86,6 +86,9 @@ describe('server/src/resolvers/Users/UsersQuery.js', () => {
         };
         const result = await tester.graphql(query, {}, { prisma }, args);
         expect(result.errors).to.exist;
+        expect(result.errors[0].message).to.be.eq(
+            'Email is already registered',
+        );
     });
     test('user resolver should be able to query newly created user', async () => {
         const query = `
