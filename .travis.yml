@@ -11,6 +11,7 @@ before_install:
 
 script:
     - npm run lint
+    - npm run test
     - cd ..
     - docker-compose build
     - docker images 
