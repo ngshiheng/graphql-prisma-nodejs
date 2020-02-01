@@ -6,7 +6,6 @@ import {
     Button,
     Checkbox,
     Container,
-    CssBaseline,
     FormControlLabel,
     Grid,
     Link,
@@ -39,7 +38,6 @@ export class Login extends React.PureComponent<RouteComponentProps<{}>> {
         const { password, email } = this.state;
         return (
             <Container component="main" maxWidth="xs">
-                <CssBaseline />
                 <Typography component="h1" variant="h5">
                     Sign In
                 </Typography>
@@ -54,7 +52,6 @@ export class Login extends React.PureComponent<RouteComponentProps<{}>> {
                                 id="email"
                                 label="Email Address"
                                 name="email"
-                                autoComplete="email"
                                 value={email}
                                 onChange={this.handleChange}
                             />
@@ -65,9 +62,8 @@ export class Login extends React.PureComponent<RouteComponentProps<{}>> {
                                 fullWidth
                                 id="password"
                                 name="password"
-                                label="Password"
+                                label="Re-enter Password"
                                 type="password"
-                                autoComplete="current-password"
                                 value={password}
                                 onChange={this.handleChange}
                             />

@@ -4,10 +4,7 @@ import { Mutation } from 'react-apollo';
 import { gql } from 'apollo-boost';
 import {
     Button,
-    Checkbox,
     Container,
-    CssBaseline,
-    FormControlLabel,
     Grid,
     Link,
     TextField,
@@ -26,6 +23,9 @@ export class Register extends React.PureComponent<RouteComponentProps<{}>> {
     state = {
         email: '',
         password: '',
+        confirmPassword: '',
+        validEmail: false,
+        validPasswords: false,
     };
 
     handleChange = (event: any) => {
@@ -33,13 +33,33 @@ export class Register extends React.PureComponent<RouteComponentProps<{}>> {
         this.setState({
             [name]: value,
         });
+        if (
+            (this.state.password !== '' &&
+                this.state.confirmPassword !== '' &&
+                (name === 'password' || 'confirmPassword') &&
+                value === this.state.password) ||
+            (value === this.state.confirmPassword && value !== '')
+        ) {
+            this.setState({
+                validPasswords: 'true',
+            });
+        } else {
+            this.setState({
+                validPasswords: false,
+            });
+        }
     };
 
     render() {
-        const { password, email } = this.state;
+        const {
+            email,
+            password,
+            confirmPassword,
+            validPasswords,
+            validEmail,
+        } = this.state;
         return (
             <Container component="main" maxWidth="xs">
-                <CssBaseline />
                 <Typography component="h1" variant="h5">
                     Register an Account
                 </Typography>
@@ -54,7 +74,6 @@ export class Register extends React.PureComponent<RouteComponentProps<{}>> {
                                 id="email"
                                 label="Email Address"
                                 name="email"
-                                autoComplete="email"
                                 value={email}
                                 onChange={this.handleChange}
                             />
@@ -67,24 +86,41 @@ export class Register extends React.PureComponent<RouteComponentProps<{}>> {
                                 name="password"
                                 label="Password"
                                 type="password"
-                                autoComplete="current-password"
                                 value={password}
                                 onChange={this.handleChange}
                             />
-                            <Button
-                                type="submit"
+                            <TextField
+                                variant="outlined"
+                                margin="normal"
+                                required
                                 fullWidth
-                                variant="contained"
-                                color="primary"
-                                onClick={async () => {
-                                    await mutate({
-                                        variables: this.state,
-                                    });
-                                    this.props.history.push('/login');
-                                }}
-                            >
-                                Register
-                            </Button>
+                                id="confirmpassword"
+                                name="confirmPassword"
+                                label="Confirm Password"
+                                type="password"
+                                value={confirmPassword}
+                                onChange={this.handleChange}
+                            />
+                            {validPasswords ? (
+                                <Button
+                                    fullWidth
+                                    variant="contained"
+                                    color="primary"
+                                    onClick={async () => {
+                                        await mutate({
+                                            variables: this.state,
+                                        });
+                                        this.props.history.push('/login');
+                                    }}
+                                >
+                                    Register
+                                </Button>
+                            ) : (
+                                <Button disabled fullWidth variant="contained">
+                                    Register
+                                </Button>
+                            )}
+
                             <Grid container>
                                 <Grid item xs>
                                     <Link href="#" variant="body2">
