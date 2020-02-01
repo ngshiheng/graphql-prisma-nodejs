@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Routes } from './Routes';
+import { App } from './App';
 import * as serviceWorker from './serviceWorker';
 
 import ApolloClient from 'apollo-boost';
@@ -12,7 +12,7 @@ const client = new ApolloClient({
 
 ReactDOM.render(
     <ApolloProvider client={client}>
-        <Routes />
+        <App />
     </ApolloProvider>,
     document.getElementById('root'),
 );

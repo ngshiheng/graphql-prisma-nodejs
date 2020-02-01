@@ -1,8 +1,18 @@
 import * as React from 'react';
+import { RouteComponentProps } from 'react-router-dom';
 import { Mutation } from 'react-apollo';
 import { gql } from 'apollo-boost';
-import { Button, TextField } from '@material-ui/core';
-import { RouteComponentProps } from 'react-router-dom';
+import {
+    Button,
+    Checkbox,
+    Container,
+    CssBaseline,
+    FormControlLabel,
+    Grid,
+    Link,
+    TextField,
+    Typography,
+} from '@material-ui/core';
 
 const CreateUserMutation = gql`
     mutation CreateUserMutation($email: String!, $password: String!) {
@@ -28,41 +38,69 @@ export class Register extends React.PureComponent<RouteComponentProps<{}>> {
     render() {
         const { password, email } = this.state;
         return (
-            <Mutation mutation={CreateUserMutation}>
-                {(mutate: any) => (
-                    <div>
+            <Container component="main" maxWidth="xs">
+                <CssBaseline />
+                <Typography component="h1" variant="h5">
+                    Register an Account
+                </Typography>
+                <Mutation mutation={CreateUserMutation}>
+                    {(mutate: any) => (
                         <div>
                             <TextField
-                                type="email"
-                                name="email" // Note: name has to match state
-                                placeholder="email"
+                                variant="outlined"
+                                margin="normal"
+                                required
+                                fullWidth
+                                id="email"
+                                label="Email Address"
+                                name="email"
+                                autoComplete="email"
                                 value={email}
                                 onChange={this.handleChange}
                             />
-                        </div>
-                        <div>
                             <TextField
+                                variant="outlined"
+                                margin="normal"
+                                required
+                                fullWidth
+                                id="password"
+                                name="password"
+                                label="Password"
                                 type="password"
-                                name="password" // Note: name has to match state
-                                placeholder="password"
+                                autoComplete="current-password"
                                 value={password}
                                 onChange={this.handleChange}
                             />
+                            <Button
+                                type="submit"
+                                fullWidth
+                                variant="contained"
+                                color="primary"
+                                onClick={async () => {
+                                    await mutate({
+                                        variables: this.state,
+                                    });
+                                    this.props.history.push('/login');
+                                }}
+                            >
+                                Register
+                            </Button>
+                            <Grid container>
+                                <Grid item xs>
+                                    <Link href="#" variant="body2">
+                                        Forgot password?
+                                    </Link>
+                                </Grid>
+                                <Grid item>
+                                    <Link href="/login" variant="body2">
+                                        {'Already have an account? Sign In'}
+                                    </Link>
+                                </Grid>
+                            </Grid>
                         </div>
-                        <Button
-                            onClick={async () => {
-                                const response = await mutate({
-                                    variables: this.state,
-                                });
-                                console.log(response);
-                                this.props.history.push('/login');
-                            }}
-                        >
-                            Register
-                        </Button>
-                    </div>
-                )}
-            </Mutation>
+                    )}
+                </Mutation>
+            </Container>
         );
     }
 }
