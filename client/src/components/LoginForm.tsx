@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { RouteComponentProps } from 'react-router-dom';
 import * as yup from 'yup';
 import { Formik, Form } from 'formik';
 import { Button, Container, Grid, Link, Typography } from '@material-ui/core';
@@ -41,6 +40,7 @@ export const LoginForm: React.FC = () => {
                     }}
                     onSubmit={async (data, { resetForm }) => {
                         resetForm();
+                        console.log(data);
                         try {
                             const login = await mutation({
                                 variables: data,
@@ -55,9 +55,8 @@ export const LoginForm: React.FC = () => {
                     {({ isValid }) => (
                         <Container component="main" maxWidth="xs">
                             <Typography component="h1" variant="h5">
-                                Sign In
+                                🔐 Sign In
                             </Typography>
-
                             <Form>
                                 <CustomTextField
                                     placeholder="Email address"

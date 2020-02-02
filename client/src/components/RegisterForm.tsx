@@ -65,9 +65,8 @@ export const RegisterForm: React.FC = () => {
                     {({ isValid }) => (
                         <Container component="main" maxWidth="xs">
                             <Typography component="h1" variant="h5">
-                                Register an Account
+                                👩🏻‍💻 Register an Account
                             </Typography>
-
                             <Form>
                                 <CustomTextField
                                     placeholder="Email Address"
