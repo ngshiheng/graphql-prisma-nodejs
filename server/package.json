@@ -7,8 +7,11 @@
         "start": "nodemon src/index.js",
         "test": "jest",
         "test:watch": "jest --watch",
-        "lint": "eslint . --ext .js --ext .gql --ext .graphql --ignore-path ../.gitignore",
-        "lint:fix": "eslint --fix . --ext .js --ext .gql --ext .graphql --ignore-path ../.gitignore"
+        "lint": "concurrently \"npm run eslint\" \"npm run prettier\"",
+        "eslint": "eslint . --ext .js --ext .gql --ext .graphql --ignore-path ../.gitignore",
+        "eslint:fix:": "eslint --fix . --ext .js --ext .gql --ext .graphql --ignore-path ../.gitignore",
+        "prettier": "prettier \"./**/*.{js,graphql,yml,yaml}\" -l --ignore-path ../.gitignore",
+        "prettier:fix": "prettier \"./**/*.{js,graphql,yml,yaml}\" --write --ignore-path ../.gitignore"
     },
     "keywords": [
         "GraphQL",
@@ -27,6 +30,7 @@
     "devDependencies": {
         "babel-eslint": "^10.0.3",
         "chai": "^4.2.0",
+        "concurrently": "^5.1.0",
         "easygraphql-tester": "^5.1.6",
         "eslint": "^6.8.0",
         "eslint-plugin-graphql": "^3.1.1",
