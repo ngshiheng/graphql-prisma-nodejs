@@ -1,5 +1,6 @@
 const { GraphQLServer } = require('graphql-yoga');
 const { prisma } = require('./generated/prisma-client');
+const { redis } = require('./utils/redis');
 const { permissions } = require('./middlewares/permissions');
 const resolvers = require('./resolvers');
 
@@ -27,6 +28,7 @@ const server = new GraphQLServer({
         return {
             ...request,
             prisma,
+            redis,
         };
     },
 });
