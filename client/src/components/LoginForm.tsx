@@ -45,7 +45,11 @@ export const LoginForm: React.FC = () => {
                             const login = await mutation({
                                 variables: data,
                             });
-                            console.log(`Token | ${login.data.login.token}`);
+                            localStorage.setItem(
+                                'Token',
+                                login.data.login.token,
+                            );
+                            // console.log(`Token | ${login.data.login.token}`);
                         } catch (error) {
                             console.error(`Error | ${error}`);
                         }
