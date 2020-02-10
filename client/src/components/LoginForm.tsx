@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as yup from 'yup';
 import { Formik, Form } from 'formik';
+import { LockOpen } from '@material-ui/icons';
 import { Button, Container, Grid, Link, Typography } from '@material-ui/core';
 import { CustomTextField } from './CustomTextField';
 import { Mutation } from 'react-apollo';
@@ -53,8 +54,18 @@ export const LoginForm: React.FC = () => {
                 >
                     {({ isValid }) => (
                         <Container component="main" maxWidth="xs">
-                            <Typography component="h1" variant="h5">
+                            <Typography
+                                variant="h2"
+                                color="primary"
+                                align="center"
+                            >
                                 Sign In
+                                <div>
+                                    <LockOpen
+                                        fontSize="large"
+                                        color="primary"
+                                    />
+                                </div>
                             </Typography>
                             <Form>
                                 <CustomTextField
@@ -73,7 +84,7 @@ export const LoginForm: React.FC = () => {
                                     disabled={!isValid}
                                     type="submit"
                                 >
-                                    Sign In
+                                    Login
                                 </Button>
                                 <Grid container>
                                     <Grid item xs>

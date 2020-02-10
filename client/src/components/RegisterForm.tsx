@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as yup from 'yup';
 import { Formik, Form } from 'formik';
+import { Computer } from '@material-ui/icons';
 import { Button, Container, Grid, Link, Typography } from '@material-ui/core';
 import { CustomTextField } from './CustomTextField';
 import { Mutation } from 'react-apollo';
@@ -64,8 +65,18 @@ export const RegisterForm: React.FC = () => {
                 >
                     {({ isValid }) => (
                         <Container component="main" maxWidth="xs">
-                            <Typography component="h1" variant="h5">
-                                Register an Account
+                            <Typography
+                                variant="h2"
+                                color="primary"
+                                align="center"
+                            >
+                                Sign Up
+                                <div>
+                                    <Computer
+                                        fontSize="large"
+                                        color="primary"
+                                    />
+                                </div>
                             </Typography>
                             <Form>
                                 <CustomTextField
