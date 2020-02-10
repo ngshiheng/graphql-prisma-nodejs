@@ -1,14 +1,22 @@
-exports.user = async (parent, args, context) => {
-    const user = await context.prisma.user({ id: args.id });
+exports.user = async (parent, args, { prisma, redis }) => {
+    const data = JSON.parse(await redis.get(args.id));
+    if (data) {
+        return data;
+    } else {
+        console.log(
+            'User not found in Redis, fetching user from database instead',
+        );
+    }
+    const user = await prisma.user({ id: args.id });
     if (!user) {
         throw new Error('User does not exist');
     }
     return user;
 };
 
-exports.users = async (parent, args, context) => {
+exports.users = async (parent, args, { prisma }) => {
     const where = args.filter ? { OR: [{ email_contains: args.filter }] } : {};
-    const users = await context.prisma.usersConnection({
+    const users = await prisma.usersConnection({
         where,
         skip: args.skip,
         after: args.after,
@@ -17,7 +25,7 @@ exports.users = async (parent, args, context) => {
         last: args.last,
         orderBy: args.orderBy,
     });
-    const totalCount = await context.prisma
+    const totalCount = await prisma
         .usersConnection({
             where,
         })

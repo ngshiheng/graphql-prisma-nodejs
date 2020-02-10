@@ -3,6 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const { expect } = require('chai');
 const { prisma } = require('../generated/prisma-client');
+const { redis } = require('../utils/redis');
 
 const resolvers = require('../resolvers');
 const schemaCode = fs.readFileSync(
@@ -19,6 +20,9 @@ describe('server/src/resolvers/Users/UsersQuery.js', () => {
     let tester;
     beforeAll(() => {
         tester = new EasyGraphQLTester(schemaCode, resolvers);
+    });
+    afterAll(() => {
+        redis.quit();
     });
     test('createUser resolver should create a single user with role USER by default', async () => {
         const query = `
@@ -38,7 +42,7 @@ describe('server/src/resolvers/Users/UsersQuery.js', () => {
             password: TEST_PASSWORD,
         };
 
-        const result = await tester.graphql(query, {}, { prisma }, args);
+        const result = await tester.graphql(query, {}, { prisma, redis }, args);
         expect(result.data.createUser.user.id).to.exist;
         TEST_ID = result.data.createUser.user.id;
         expect(result.data.createUser.user.email).to.be.eq(TEST_EMAIL);
@@ -103,7 +107,7 @@ describe('server/src/resolvers/Users/UsersQuery.js', () => {
         const args = {
             id: TEST_ID,
         };
-        const result = await tester.graphql(query, {}, { prisma }, args);
+        const result = await tester.graphql(query, {}, { prisma, redis }, args);
         expect(result.data.user.id).to.be.eq(TEST_ID);
         expect(result.data.user.email).to.be.eq(TEST_EMAIL);
         expect(result.data.user.role).to.be.eq(TEST_ROLE);
@@ -121,7 +125,7 @@ describe('server/src/resolvers/Users/UsersQuery.js', () => {
             id: TEST_ID,
             email: 'updated@email.com',
         };
-        const result = await tester.graphql(query, {}, { prisma }, args);
+        const result = await tester.graphql(query, {}, { prisma, redis }, args);
         expect(result.data.updateUser.id).to.be.eq(TEST_ID);
         expect(result.data.updateUser.email).to.be.eq('updated@email.com');
     });
@@ -138,7 +142,7 @@ describe('server/src/resolvers/Users/UsersQuery.js', () => {
         const args = {
             id: TEST_ID,
         };
-        const result = await tester.graphql(query, {}, { prisma }, args);
+        const result = await tester.graphql(query, {}, { prisma, redis }, args);
         expect(result.data.deleteUser.id).to.be.eq(TEST_ID);
         expect(result.data.deleteUser.email).to.be.eq('updated@email.com');
         expect(result.data.deleteUser.role).to.be.eq(TEST_ROLE);
