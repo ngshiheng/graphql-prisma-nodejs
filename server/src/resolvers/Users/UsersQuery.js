@@ -9,7 +9,7 @@ exports.user = async (parent, args, { prisma, redis }) => {
     }
     const user = await prisma.user({ id: args.id });
     if (!user) {
-        throw new Error('User does not exist');
+        return new Error('User does not exist');
     }
     return user;
 };

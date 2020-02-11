@@ -6,6 +6,7 @@ exports.getUserId = context => {
         const token = Authorization.replace('Bearer ', '');
         const { userId } = jwt.verify(token, process.env.SECRET);
         return userId;
+    } else {
+        return null;
     }
-    throw new Error('Unauthorized request');
 };
