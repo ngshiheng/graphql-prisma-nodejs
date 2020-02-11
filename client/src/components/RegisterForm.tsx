@@ -4,6 +4,7 @@ import { Formik, Form } from 'formik';
 import { Computer } from '@material-ui/icons';
 import { Button, Container, Grid, Link, Typography } from '@material-ui/core';
 import { CustomTextField } from './CustomTextField';
+import { useHistory } from 'react-router-dom';
 import { Mutation } from 'react-apollo';
 import { gql } from 'apollo-boost';
 
@@ -38,6 +39,7 @@ const registerFormValidationSchema = yup.object().shape({
 });
 
 export const RegisterForm: React.FC = () => {
+    const history = useHistory();
     return (
         <Mutation mutation={CREATE_USER_MUTATION}>
             {(mutation: any) => (
@@ -54,11 +56,9 @@ export const RegisterForm: React.FC = () => {
                             const register = await mutation({
                                 variables: data,
                             });
-                            console.log(
-                                `Token | ${register.data.createUser.token}`,
-                            );
+                            history.push('login');
                         } catch (error) {
-                            console.error(error);
+                            alert(error);
                         }
                     }}
                     validationSchema={registerFormValidationSchema}
@@ -70,7 +70,7 @@ export const RegisterForm: React.FC = () => {
                                 color="primary"
                                 align="center"
                             >
-                                Sign Up
+                                Register
                                 <div>
                                     <Computer
                                         fontSize="large"

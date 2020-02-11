@@ -8,6 +8,14 @@ import { ApolloProvider } from 'react-apollo';
 
 const client = new ApolloClient({
     uri: 'http://localhost:4000/graphql',
+    request: async operation => {
+        const token = localStorage.getItem('authentication-token');
+        operation.setContext({
+            headers: {
+                Authorization: token ? `Bearer ${token}` : '',
+            },
+        });
+    },
 });
 
 ReactDOM.render(

@@ -45,14 +45,14 @@ const GET_USERS_QUERY = gql`
     }
 `;
 
-export const PrivatePage = () => {
+export const PrivatePage: React.FC = () => {
     const classes = useStyles();
     return (
         <Container component="main" maxWidth="xs">
-            <Typography align="center" color="secondary" variant="h1">
+            <Typography align="center" color="primary" variant="h2">
                 Private Page
                 <div>
-                    <Lock fontSize="large" color="secondary" />
+                    <Lock fontSize="large" color="primary" />
                 </div>
             </Typography>
             <Grid container spacing={2}>
@@ -64,12 +64,10 @@ export const PrivatePage = () => {
                         <Query query={GET_USERS_QUERY}>
                             {({ loading, error, data }: any) => {
                                 if (loading)
-                                    return (
-                                        <CircularProgress color="secondary" />
-                                    );
+                                    return <CircularProgress color="primary" />;
                                 if (error)
                                     return (
-                                        <Typography color="secondary">
+                                        <Typography color="error">
                                             {error.message}
                                         </Typography>
                                     );

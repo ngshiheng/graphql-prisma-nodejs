@@ -4,8 +4,10 @@ import { Formik, Form } from 'formik';
 import { LockOpen } from '@material-ui/icons';
 import { Button, Container, Grid, Link, Typography } from '@material-ui/core';
 import { CustomTextField } from './CustomTextField';
+import { useHistory } from 'react-router-dom';
 import { Mutation } from 'react-apollo';
 import { gql } from 'apollo-boost';
+import auth from '../utils/authentication';
 
 const LOGIN_MUTATION = gql`
     mutation LoginMutation($email: String!, $password: String!) {
@@ -30,6 +32,7 @@ const loginFormValidationSchema = yup.object().shape({
 });
 
 export const LoginForm: React.FC = () => {
+    const history = useHistory();
     return (
         <Mutation mutation={LOGIN_MUTATION}>
             {(mutation: any) => (
@@ -46,12 +49,12 @@ export const LoginForm: React.FC = () => {
                                 variables: data,
                             });
                             localStorage.setItem(
-                                'Token',
+                                'authentication-token',
                                 login.data.login.token,
                             );
-                            // console.log(`Token | ${login.data.login.token}`);
+                            auth.login(() => history.push('/'));
                         } catch (error) {
-                            console.error(`Error | ${error}`);
+                            alert(error);
                         }
                     }}
                     validationSchema={loginFormValidationSchema}
@@ -63,7 +66,7 @@ export const LoginForm: React.FC = () => {
                                 color="primary"
                                 align="center"
                             >
-                                Sign In
+                                Login
                                 <div>
                                     <LockOpen
                                         fontSize="large"
@@ -73,7 +76,7 @@ export const LoginForm: React.FC = () => {
                             </Typography>
                             <Form>
                                 <CustomTextField
-                                    placeholder="Email address"
+                                    placeholder="Email Address"
                                     name="email"
                                 />
                                 <CustomTextField
