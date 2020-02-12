@@ -53,7 +53,7 @@ export const RegisterForm: React.FC = () => {
                     onSubmit={async (data, { resetForm }) => {
                         resetForm();
                         try {
-                            const register = await mutation({
+                            await mutation({
                                 variables: data,
                             });
                             history.push('login');

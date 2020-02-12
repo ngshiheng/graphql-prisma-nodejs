@@ -53,11 +53,17 @@ input UserUpdateInput {
     role: Role
 }
 
+type Message {
+    message: String!
+}
+
 type Mutation {
     login(email: String!, password: String!): AuthPayload!
     createUser(input: UserCreateInput!): AuthPayload!
     updateUser(id: ID!, input: UserUpdateInput!): User!
     deleteUser(id: ID!): User!
+    resetPassword(email: String!): Message!
+    updatePassword(password: String!): Message!
 }
 
 enum Role {
