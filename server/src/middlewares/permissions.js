@@ -23,9 +23,13 @@ exports.permissions = shield({
     Query: {
         user: isAuthenticated,
         users: isAuthenticated,
+        post: isAuthenticated,
     },
     Mutation: {
         updateUser: or(isAdmin, isOwner),
         deleteUser: or(isAdmin),
+        createPost: or(isAdmin, isAuthenticated),
+        updatePost: or(isAdmin, isOwner),
+        deletePost: or(isAdmin, isOwner),
     },
 });

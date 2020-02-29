@@ -1,7 +1,9 @@
 type User {
     id: ID!
+    name: String
     email: String!
     role: Role!
+    posts: [Post!]!
     createdAt: String!
     updatedAt: String!
 }
@@ -29,32 +31,92 @@ type PageInfo {
     endCursor: String
 }
 
-type Query {
-    user(id: ID!): User!
-    users(
-        filter: String
-        skip: Int
-        after: String
-        before: String
-        first: Int
-        last: Int
-        orderBy: UserOrderByInput
-    ): UserConnection!
-}
-
 input UserCreateInput {
     email: String!
     password: String!
+    name: String
     role: Role
 }
 
 input UserUpdateInput {
+    name: String
     email: String
     role: Role
 }
 
 type Message {
     message: String!
+}
+
+enum Role {
+    ADMIN
+    USER
+}
+
+enum UserOrderByInput {
+    id_ASC
+    id_DESC
+    name_ASC
+    name_DESC
+    email_ASC
+    email_DESC
+    role_ASC
+    role_DESC
+    createdAt_ASC
+    createdAt_DESC
+    updatedAt_ASC
+    updatedAt_DESC
+}
+
+type Post {
+    id: ID!
+    title: String!
+    category: PostCategory!
+    author: User!
+    createdAt: String!
+    updatedAt: String!
+}
+
+type PostConnection {
+    edges: [PostEdge!]!
+    pageInfo: PageInfo!
+    totalCount: Float!
+}
+
+input PostCreateInput {
+    title: String!
+    category: PostCategory!
+}
+
+type PostEdge {
+    node: Post!
+    cursor: String!
+}
+
+input PostUpdateInput {
+    title: String
+    category: PostCategory
+}
+
+enum PostCategory {
+    SPORT
+    FINANCE
+    TECHNOLOGY
+    OTHER
+}
+
+type Query {
+    post(id: ID!): Post!
+    user(id: ID!): User!
+    users(
+        orderBy: UserOrderByInput
+        last: Int
+        first: Int
+        before: String
+        after: String
+        skip: Int
+        filter: String
+    ): UserConnection!
 }
 
 type Mutation {
@@ -64,22 +126,7 @@ type Mutation {
     deleteUser(id: ID!): User!
     resetPassword(email: String!): Message!
     updatePassword(password: String!): Message!
-}
-
-enum Role {
-    USER
-    ADMIN
-}
-
-enum UserOrderByInput {
-    id_ASC
-    id_DESC
-    email_ASC
-    email_DESC
-    role_ASC
-    role_DESC
-    createdAt_ASC
-    createdAt_DESC
-    updatedAt_ASC
-    updatedAt_DESC
+    createPost(input: PostCreateInput!): Post!
+    updatePost(input: PostUpdateInput!, id: String!): Post!
+    deletePost(id: ID!): Post!
 }
