@@ -9,7 +9,15 @@ var models = [
         embedded: false,
     },
     {
-        name: 'Role',
+        name: 'UserRole',
+        embedded: false,
+    },
+    {
+        name: 'Post',
+        embedded: false,
+    },
+    {
+        name: 'Category',
         embedded: false,
     },
 ];

@@ -1,0 +1,15 @@
+type Post {
+    id: ID! @id
+    title: String!
+    category: Category! @default(value: OTHER)
+    author: User!
+    createdAt: DateTime! @createdAt
+    updatedAt: DateTime! @updatedAt
+}
+
+enum Category {
+    SPORT
+    FINANCE
+    TECHNOLOGY
+    OTHER
+}
