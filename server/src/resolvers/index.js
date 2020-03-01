@@ -15,7 +15,7 @@ module.exports = {
     User: {
         posts: async ({ id }, args, { prisma }) => {
             const where = args.filter
-                ? { AND: [{ author: { id }, title_contains: filter }] }
+                ? { AND: [{ author: { id }, title_contains: args.filter }] }
                 : { author: { id } };
             const posts = await prisma.postsConnection({
                 where,
