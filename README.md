@@ -13,7 +13,7 @@
 [![Build Status](https://travis-ci.org/ngshiheng/graphql-prisma-nodejs.svg?branch=master)](https://travis-ci.org/ngshiheng/graphql-prisma-nodejs)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/ngshiheng/graphql-prisma-nodejs/blob/master/LICENSE)
 
-A GraphQL, Prisma, NodeJS boilerplate with authentication setup
+A GraphQL, Prisma, NodeJS fullstack boilerplate with authentication setup.
 
 # Tech Stacks :computer:
 

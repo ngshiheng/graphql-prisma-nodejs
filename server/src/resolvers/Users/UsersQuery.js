@@ -26,9 +26,7 @@ exports.users = async (parent, args, { prisma }) => {
         orderBy: args.orderBy,
     });
     const totalCount = await prisma
-        .usersConnection({
-            where,
-        })
+        .usersConnection({ where })
         .aggregate()
         .count();
     return {

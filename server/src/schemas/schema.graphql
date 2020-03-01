@@ -3,7 +3,7 @@ type User {
     name: String
     email: String!
     role: Role!
-    posts: [Post!]!
+    posts: PostConnection!
     createdAt: String!
     updatedAt: String!
 }
@@ -105,8 +105,28 @@ enum PostCategory {
     OTHER
 }
 
+enum PostOrderByInput {
+    id_ASC
+    id_DESC
+    title_ASC
+    title_DESC
+    createdAt_ASC
+    createdAt_DESC
+    updatedAt_ASC
+    updatedAt_DESC
+}
+
 type Query {
     post(id: ID!): Post!
+    posts(
+        orderBy: PostOrderByInput
+        last: Int
+        first: Int
+        before: String
+        after: String
+        skip: Int
+        filter: String
+    ): PostConnection!
     user(id: ID!): User!
     users(
         orderBy: UserOrderByInput

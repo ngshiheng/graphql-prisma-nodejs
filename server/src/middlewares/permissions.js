@@ -23,7 +23,6 @@ exports.permissions = shield({
     Query: {
         user: isAuthenticated,
         users: isAuthenticated,
-        post: isAuthenticated,
     },
     Mutation: {
         updateUser: or(isAdmin, isOwner),
